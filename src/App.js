@@ -1,15 +1,24 @@
-import logo from './coderhouse.png';
+import logo from './images/coderhouse.png';
+import { FaCut } from 'react-icons/fa';
 import './App.css';
+import { NavBar } from './components/navBar/navBar'
 
-function App() {
+function App () {
+  const name = 'Perez Barber Shop'
+
+  const handleClick = () => alert('✂︎ Welcome to ' + name + ' ✂︎')
+
   return (
     <div className="App">
       <header className="App-header">
+        <NavBar />
+      </header>
+      <body className="App-body">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Welcome to <code>Perez Barber Shop!</code>
+          <FaCut onClick={handleClick} /> Welcome to {name} <FaCut onClick={handleClick} />
         </p>
-      </header>
+      </body>
     </div>
   );
 }
