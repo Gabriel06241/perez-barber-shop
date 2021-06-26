@@ -18,8 +18,8 @@ nav {
   align-content: center;
   width: 100%;
 }
-.Barber-logo {
-  height: 25vmin;
+.barber-logo {
+  height: 20vmin;
   pointer-events: none;
   text-align: center;
 }
