@@ -2,8 +2,9 @@ import logo from './images/coderhouse.png';
 import { FaCut } from 'react-icons/fa';
 import './App.css';
 import { NavBar } from './components/navBar/navBar'
+import { ItemListContainer } from './components/itemListContainer/itemListContainer'
 
-function App () {
+const App = () => {
   const name = 'Perez Barber Shop'
 
   const handleClick = () => alert('✂︎ Welcome to ' + name + ' ✂︎')
@@ -14,6 +15,7 @@ function App () {
         <NavBar />
       </header>
       <body className="App-body">
+        <ItemListContainer greeting="Saludos..." />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           <FaCut onClick={handleClick} /> Welcome to {name} <FaCut onClick={handleClick} />
