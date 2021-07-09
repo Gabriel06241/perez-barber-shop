@@ -25,6 +25,19 @@
   border-radius: 10px;
 }
 
+.navLink:link {
+  text-decoration: none;
+}
+/* .navLink:visited {
+  color: #fff;
+} */
+.navLink:hover {
+  color: yellow;
+}
+.navLink:active {
+  color: red;
+}
+
 .navBar .category p {
   margin: 10px;
 }
