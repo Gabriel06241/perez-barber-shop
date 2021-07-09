@@ -1,54 +1,29 @@
-.compItemCount {
-  border: 1px solid red;
-  width: 30vw;
-  height: 30vh;
-  padding: 15px;
+.itemCountContainer {
+  width: 10vw;
+  height: 10vw;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.itemCount {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-flow: row;
+}
+
+.itemCount button {
+  font-size: 15px;
+  border-radius: 20%;
+  background-color: cadetblue;
+  margin: 10px 0;
   text-align: center;
 }
 
-.formItemCount {
-  border: 1px solid red;
-  padding: 5px;
-}
-
-.countInput {
-  border: none;
-  border-top: 1px solid red;
-  border-bottom: 1px solid red;
-  padding: 5px;
-  display: inline-block;
+.itemCountContainer button {
+  border-radius: 3px;
+  background-color: cadetblue;
   text-align: center;
-  font-size: 15px;
-  font-weight: bold;
 }
 
-.btnDecrement {
-  border: none;
-  border-top: 1px solid red;
-  border-left: 1px solid red;
-  border-bottom: 1px solid red;
-  padding: 5px;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: white;
-}
-
-.btnIncrement {
-  border: none;
-  border-top: 1px solid red;
-  border-right: 1px solid red;
-  border-bottom: 1px solid red;
-  padding: 5px;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: white;
-}
-
-.btnAddToCart {
-  border: 1px solid red;
-  padding: 5px;
-  display: inline-block;
-  width: 210px;
-  margin: 5px;
-  background-color: white;
-}

@@ -1,3 +1,6 @@
-.item-list-container {
-  background-color: turquoise;
+.itemListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

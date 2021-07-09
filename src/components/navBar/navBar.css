@@ -1,25 +1,35 @@
-nav {
-  width: 60%;
-  margin-bottom: auto;
-  margin-top: auto;
+.navBar {
+  align-items: center;
   display: flex;
+  justify-content: space-between;
+  padding: 4px 12px;
+  background-color: cadetblue;
 }
-.nav-options {
-  width: 60%;
-  margin-bottom: 0px;
-  margin-top: auto;
+
+.navBar .categories {
+  align-items: center;
   display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
 }
-.option {
+
+.navBar .category {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: center;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  padding: 5px;
+  background-color: cornflowerblue;
+  font-size: 15px;
+  border-radius: 10px;
 }
-.barber-logo {
+
+.navBar .category p {
+  margin: 10px;
+}
+
+.barberLogo {
   height: 20vmin;
   pointer-events: none;
-  text-align: center;
 }
