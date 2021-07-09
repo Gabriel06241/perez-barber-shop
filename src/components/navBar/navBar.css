@@ -1,0 +1,25 @@
+nav {
+  width: 60%;
+  margin-bottom: auto;
+  margin-top: auto;
+  display: flex;
+}
+.nav-options {
+  width: 60%;
+  margin-bottom: 0px;
+  margin-top: auto;
+  display: flex;
+}
+.option {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+}
+.Barber-logo {
+  height: 25vmin;
+  pointer-events: none;
+  text-align: center;
+}
