@@ -23,31 +23,6 @@ export const NavBar = () => {
             </li>
           </NavLink>
         )}
-        {/* <NavLink to='/category/combos'>
-          <li className='category'>
-            💇🏼‍♂️ <p>COMBOS</p>
-          </li>
-        </NavLink>
-        <NavLink to='/category/machines'>
-          <li className='category'>
-            🪒 <p>MAQUINAS</p>
-          </li>
-        </NavLink>
-        <NavLink to='/category/razor'>
-          <li className='category'>
-            🖌 <p>NAVAJAS</p>
-          </li>
-        </NavLink>
-        <NavLink to='/category/scissors'>
-          <li className='category'>
-            ✂️ <p>TIJERAS</p>
-          </li>
-        </NavLink>
-        <NavLink to='accesories'>
-          <li className='category'>
-            💈 <p>ACCESORIOS</p>
-          </li>
-        </NavLink> */}
       </ul>
       <CartWidget />
     </header>
