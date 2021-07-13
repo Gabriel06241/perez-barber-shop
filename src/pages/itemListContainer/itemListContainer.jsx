@@ -1,48 +1,32 @@
 import './itemListContainer.css'
 import { ItemList } from '../../components/itemList/itemList'
 import { useState, useEffect } from 'react'
-export const ItemListContainer = ({ greeting }) => {
+import { useParams } from 'react-router-dom'
+import ITEMS from '../../data/items.json'
+
+export const ItemListContainer = ({ greeting, handleAddToCart }) => {
+  const { id } = useParams()
   const [items, setItems] = useState([])
 
+  const getItems = (id) => new Promise((resolve, reject) => {
+    const items = id ? ITEMS.filter(item => item.category === id) : ITEMS
+    setTimeout(() => {
+      resolve(items);
+    }, 1000)
+  })
+
   useEffect(() => {
-    const getItems = () => {
-      return [
-        {
-          id: 1,
-          title: 'Title 1',
-          description: 'Description 1',
-          price: 1,
-          pictureUrl: 'PictureUrl 1',
-          stock: 3
-        },
-        {
-          id: 2,
-          title: 'Title 2',
-          description: 'Description 2',
-          price: 2,
-          pictureUrl: 'PictureUrl 2',
-          stock: 0
-        },
-        {
-          id: 3,
-          title: 'Title 3',
-          description: 'Description 3',
-          price: 3,
-          pictureUrl: 'PictureUrl 3',
-          stock: 5
-        }
-      ]
-    }
-    const items = getItems()
-    setItems(items)
-  }, [])
+      getItems(id).then((items) => {
+        setItems(items)
+      }).catch(error => alert('Error obteniendo los productos ...', error))
+  }, [id])
 
   return (
     <section className="itemListContainer">
       <p>
         {greeting}
       </p>
-      <ItemList items={items} />
+      <ItemList items={items} handleAddToCart={handleAddToCart} />
     </section>
   )
 }

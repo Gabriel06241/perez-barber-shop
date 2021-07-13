@@ -1,9 +1,8 @@
 .itemCountContainer {
-  width: 10vw;
+  width: 15vw;
   height: 10vw;
   display: flex;
   flex-direction: column;
-
 }
 
 .itemCount {
@@ -15,15 +14,16 @@
 
 .itemCount button {
   font-size: 15px;
-  border-radius: 20%;
+  border-radius: 20px;
   background-color: cadetblue;
   margin: 10px 0;
   text-align: center;
 }
 
 .itemCountContainer button {
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: cadetblue;
   text-align: center;
+  margin-bottom: 30px;
 }
 
