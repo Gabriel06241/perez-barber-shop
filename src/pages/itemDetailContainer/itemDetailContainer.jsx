@@ -1,27 +1,30 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { ItemDetail } from '../../components/itemDetail/itemDetail'
+import ITEMS from '../../data/items.json'
 
-export const ItemDetailContainer = () => {
-  const [item, setItem] = useState()
+export const ItemDetailContainer = ({ handleAddToCart }) => {
+  const { id } = useParams()
+  const [item, setItem] = useState({})
+
+  const getItem = new Promise((resolve, reject) => {
+    const items = ITEMS.find(item => item.id === Number(id))
+    setTimeout(() => {
+      resolve(items)
+    }, 1000)
+  })
 
   useEffect(() => {
-    const getItem = () => {
-      return {
-        id: 3,
-        title: 'Title 3',
-        description: 'Description 3',
-        price: 3,
-        pictureUrl: 'PictureUrl 3',
-        stock: 5
-      }
-    }
-    const item = getItem()
-    setItem(item)
+    getItem
+      .then(item => {
+        setItem(item)
+      })
+      .catch(error => alert('Error obteniendo un producto ...', error))
   }, [])
 
   return (
     <section>
-      <ItemDetail item={item} />
+      <ItemDetail item={item} handleAddToCart={handleAddToCart} />
     </section>
   )
 }
