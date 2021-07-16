@@ -13,16 +13,17 @@ import {
 const Wrapper = styled.div``
 
 export const App = () => {
+  const greeting = "Hola 👋🏽 , ¡Bienvenido a tu Barber Shop!";
 
   // const isLoading, error = null
 
-  const getTotalItems = () => null
+  // const getTotalItems = () => null
 
   const handleAddToCart = () => {
     console.log('clicked!')
   }
 
-  const handleRemoveFromCart = () => null
+  // const handleRemoveFromCart = () => null
 
   // if (isLoading) return <LinearProgress />
 
@@ -34,13 +35,13 @@ export const App = () => {
         <NavBar />
         <Switch>
           <Route exact path="/">
-            <ItemListContainer greeting="Hola 👋🏽 , ¡Bienvenido a tu Barber Shop!" handleAddToCart={handleAddToCart} />
+            <ItemListContainer greeting={greeting} handleAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/category/:id">
-            <ItemListContainer greeting="Hola 👋🏽 , ¡Bienvenido a tu Barber Shop!" handleAddToCart={handleAddToCart} />
+            <ItemListContainer greeting={greeting} handleAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/item/:id">
-            <ItemDetailContainer handleAddToCart={handleAddToCart} />
+            <ItemDetailContainer greeting={greeting} handleAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/cart">
             <Cart />
