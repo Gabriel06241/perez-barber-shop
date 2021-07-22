@@ -1,20 +1,27 @@
-// import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Fragment, useState, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { ItemCount } from '../itemCount/itemCount'
+import './itemDetail.css'
 import styled from 'styled-components'
-// import { Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardMedia from '@material-ui/core/CardMedia'
+import Skeleton from '@material-ui/lab/Skeleton'
+import { CartContext } from '../../context/cartContext'
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 97%;
+  width: 90%;
   border: 1px solid lightblue;
   border-radius: 20px;
   height: 100%;
-  margin: 20px;
+  padding: 10px;
+  margin: 10px;
 
   /* button {
     border-radius: 0 0 20px 20px;
@@ -28,61 +35,119 @@ const Wrapper = styled.div`
 
   div {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
     /* padding: 1rem; */
     height: 100%;
   }
+
+  .bodyCartItemSkeleton {
+    width: 350px;
+  }
+  .skeletonImage {
+    justify-content: center;
+  }
+
+  .finishBuying {
+    border-radius: 5px;
+    background-color: cadetblue;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .continueBuying {
+    border-radius: 5px;
+    background-color: skyblue;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 `
 
-export const ItemDetail = ({ item, handleAddToCart }) => {
-  console.log(JSON.stringify(item))
+export const ItemDetail = ({ item }) => {
+  const history = useHistory()
+  const [itemAdded, setItemAdded] = useState(false)
+  const { quantity, setQuantity, addItem, finishBuying } = useContext(CartContext)
   const { id, title, description, price, image, stock } = item
-  console.log('id :>> ', id)
 
-  // useEffect(
-  //   () => {
-  //     console.log(item);
-  //   },
-  //   [item]
-  // )
-
-  const onAdd = quantityToAdd => {
-    console.log('quantityToAdd :>> ', quantityToAdd)
+  const onAdd = ({ quantityToAdd }) => {
+    setItemAdded(true)
+    console.log('quantity :>> ', quantity);
+    console.log('quantityToAdd :>> ', quantityToAdd);
+    setQuantity(quantity + quantityToAdd)
+    addItem({ item, quantity: quantityToAdd })
   }
 
   return (
-    <Wrapper>
-      {/* <ItemCount stock={stock} initial={1} onAdd={onAdd} />
-      <Link to="/Cart" className="finishBuying">
-        <p>Terminar Compra</p>
-      </Link>
-      <p>
-        {title}
-      </p> */}
-
-      <img src={image} alt="Product" />
-      <div>
-        <h3>
-          <Link to={`/item/${id}`} className="itemLink">
-            {' '}{title}{' '}
-          </Link>
-        </h3>
-        <p>
-          {' '}{description}{' '}
-        </p>
-        <h3>
-          {'$ '}{price}{' '}
-        </h3>
-      </div>
-      <ItemCount stock={stock} initial={1} onAdd={onAdd} />
-      {/* <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button> */}
-      {/* <Button onClick={() => handleAddToCart(item)}>Agregar al carrito</Button> */}
-      {/* <ItemCount
-        stock={stock}
-        initial={1}
-        onAdd={() => {
-          console.log('onAdd...')
-        }}
-      /> */}
-    </Wrapper>
+    <Fragment>
+      <LinearProgress />
+      <Card className='cardItem'>
+        <Wrapper>
+          <CardActionArea>
+            {image ? (
+              <CardMedia
+                component='img'
+                alt={description}
+                height='250'
+                image={image}
+                title={title}
+              />
+            ) : (
+              <Skeleton
+                className='skeletonImage'
+                variant='rect'
+                width={350}
+                height={200}
+              />
+            )}
+          </CardActionArea>
+          {title ? (
+            <div>
+              <h4>
+                <Link to={`/item/${id}`} className='itemLink'>
+                  {' '}
+                  {title}{' '}
+                </Link>
+              </h4>
+              <p> {description} </p>
+              <h3>
+                {'$ '}
+                {price}{' '}
+              </h3>
+            </div>
+          ) : (
+            <div className='bodyCartItemSkeleton'>
+              <Skeleton />
+              <Skeleton animation={false} />
+              <Skeleton animation='wave' />
+            </div>
+          )}
+          <CardActions>
+            {title && !itemAdded ? (
+              <ItemCount stock={stock} initial={1} onAdd={onAdd} />
+            ) : (
+              ''
+            )}
+            {title && itemAdded ? (
+              <>
+              <button
+                className='finishBuying'
+                disabled={!stock}
+                onClick={() => finishBuying()}
+              >
+                Terminar compra
+              </button>
+              <button
+                className='continueBuying'
+                onClick={() => history.push('/')}
+              >
+                Continuar comprando
+              </button>
+              </>
+            ) : (
+              ''
+            )}
+          </CardActions>
+        </Wrapper>
+      </Card>
+    </Fragment>
   )
 }

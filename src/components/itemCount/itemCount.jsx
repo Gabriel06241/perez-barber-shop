@@ -2,21 +2,17 @@ import { useState } from 'react'
 import './itemCount.css'
 
 export const ItemCount = ({ initial = 1, stock, onAdd }) => {
-  const [counter, setCounter] = useState(initial)
-  const [addToCart, setAddToCart] = useState(false)
+  const [quantityToAdd, setQuantity] = useState(initial)
 
-  const handleCounter = operator => {
+  const handleQuantity = operator => {
     if (operator === '+') {
-      if (stock > counter) {
-        setCounter(counter + 1)
+      if (stock > quantityToAdd) {
+        setQuantity(quantityToAdd + 1)
       }
     } else if (operator === '-') {
-      if (counter > 1) {
-        setCounter(counter - 1)
+      if (quantityToAdd > 1) {
+        setQuantity(quantityToAdd - 1)
       }
-    }
-    if (counter === 1) {
-      setAddToCart(false)
     }
   }
 
@@ -25,24 +21,24 @@ export const ItemCount = ({ initial = 1, stock, onAdd }) => {
       <div className="itemCount">
         <button
           onClick={() => {
-            handleCounter('-')
+            handleQuantity('-')
           }}
         >
           -
         </button>
         <p>
-          {counter}
+          {quantityToAdd}
         </p>
         <button
           onClick={() => {
-            handleCounter('+')
+            handleQuantity('+')
           }}
         >
           +
         </button>
       </div>
-      <button disabled={!stock} onClick={() => setAddToCart(true)}>
-        {addToCart ? 'Terminar compra' : 'Agregar al carrito'}
+      <button disabled={!stock} onClick={() => onAdd({quantityToAdd})}>
+        Agregar al carrito
       </button>
     </div>
   )

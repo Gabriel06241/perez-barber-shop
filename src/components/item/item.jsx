@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-// import { ItemCount } from '../itemCount/itemCount'
-// import './item.css'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,14 +28,26 @@ const Wrapper = styled.div`
     padding: 1rem;
     height: 100%;
   }
+  
+  .skeletonImage {
+    justify-content: center;
+  }
 `
 
-export const Item = ({ item, handleAddToCart }) => {
-  const { id, title, description, price, image, stock } = item
+export const Item = ({ item }) => {
+  const history = useHistory()
+  const { id, title, description, price, image } = item
 
   return (
     <Wrapper>
-      <img src={image} alt="Product" />
+      {image
+        ? <img src={image} alt="Product" />
+        : <Skeleton
+            className="skeletonImage"
+            variant="rect"
+            width={350}
+            height={200}
+          />}
       <div>
         <h3>
           <Link to={`/item/${id}`} className="itemLink">
@@ -47,18 +58,12 @@ export const Item = ({ item, handleAddToCart }) => {
           {' '}{description}{' '}
         </p>
         <h3>
-          {'$ '}{price}{' '}
+          {'$ '}
+          {price}{' '}
         </h3>
       </div>
-      <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button>
-      {/* <Button onClick={() => handleAddToCart(item)}>Agregar al carrito</Button> */}
-      {/* <ItemCount
-        stock={stock}
-        initial={1}
-        onAdd={() => {
-          console.log('onAdd...')
-        }}
-      /> */}
+      <Button onClick={() => history.push(`/item/${id}`) }>Ver detalle</Button>
+      {/* <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button> */}
     </Wrapper>
   )
 }
