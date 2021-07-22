@@ -6,8 +6,7 @@ import Grid from '@material-ui/core/Grid'
 const Wrapper = styled.div`
   button {
     border-radius: 0 0 20px 20px;
-  }
-`
+  }`
 
 export const ItemList = ({ items, handleAddToCart }) => {
   return (

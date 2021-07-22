@@ -1,5 +1,5 @@
-import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Fragment, useState, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { ItemCount } from '../itemCount/itemCount'
 import './itemDetail.css'
 import styled from 'styled-components'
@@ -9,6 +9,7 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardMedia from '@material-ui/core/CardMedia'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { CartContext } from '../../context/cartContext'
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,71 +46,105 @@ const Wrapper = styled.div`
   .skeletonImage {
     justify-content: center;
   }
+
+  .finishBuying {
+    border-radius: 5px;
+    background-color: cadetblue;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .continueBuying {
+    border-radius: 5px;
+    background-color: skyblue;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 `
 
-export const ItemDetail = ({ item, handleAddToCart }) => {
-  console.log(JSON.stringify(item))
+export const ItemDetail = ({ item }) => {
+  const history = useHistory()
+  const [itemAdded, setItemAdded] = useState(false)
+  const { quantity, setQuantity, addItem, finishBuying } = useContext(CartContext)
   const { id, title, description, price, image, stock } = item
-  console.log('id :>> ', id)
 
-  // useEffect(
-  //   () => {
-  //     console.log(item);
-  //   },
-  //   [item]
-  // )
-
-  const onAdd = quantityToAdd => {
-    console.log('quantityToAdd :>> ', quantityToAdd)
+  const onAdd = ({ quantityToAdd }) => {
+    setItemAdded(true)
+    console.log('quantity :>> ', quantity);
+    console.log('quantityToAdd :>> ', quantityToAdd);
+    setQuantity(quantity + quantityToAdd)
+    addItem({ item, quantity: quantityToAdd })
   }
 
   return (
     <Fragment>
-      <LinearProgress/>
-      <Card className="cardItem">
+      <LinearProgress />
+      <Card className='cardItem'>
         <Wrapper>
           <CardActionArea>
-            {image
-              ? <CardMedia
-                  component="img"
-                  alt={description}
-                  height="250"
-                  image={image}
-                  title={title}
-                />
-              : <Skeleton
-                  className="skeletonImage"
-                  variant="rect"
-                  width={350}
-                  height={200}
-                />}
-
-            {/* <CardContent /> */}
+            {image ? (
+              <CardMedia
+                component='img'
+                alt={description}
+                height='250'
+                image={image}
+                title={title}
+              />
+            ) : (
+              <Skeleton
+                className='skeletonImage'
+                variant='rect'
+                width={350}
+                height={200}
+              />
+            )}
           </CardActionArea>
-          {
-            title
-            ? <div>
-                <h4>
-                  <Link to={`/item/${id}`} className="itemLink">
-                    {' '}{title}{' '}
-                  </Link>
-                </h4>
-                <p>
-                  {' '}{description}{' '}
-                </p>
-                <h3>
-                  {'$ '}
-                  {price}{' '}
-                </h3>
-              </div>
-            : <div className="bodyCartItemSkeleton">
-                <Skeleton />
-                <Skeleton animation={false} />
-                <Skeleton animation="wave" />
-              </div>
-          }
+          {title ? (
+            <div>
+              <h4>
+                <Link to={`/item/${id}`} className='itemLink'>
+                  {' '}
+                  {title}{' '}
+                </Link>
+              </h4>
+              <p> {description} </p>
+              <h3>
+                {'$ '}
+                {price}{' '}
+              </h3>
+            </div>
+          ) : (
+            <div className='bodyCartItemSkeleton'>
+              <Skeleton />
+              <Skeleton animation={false} />
+              <Skeleton animation='wave' />
+            </div>
+          )}
           <CardActions>
-            {title ? <ItemCount stock={stock} initial={1} onAdd={onAdd} /> : ''}
+            {title && !itemAdded ? (
+              <ItemCount stock={stock} initial={1} onAdd={onAdd} />
+            ) : (
+              ''
+            )}
+            {title && itemAdded ? (
+              <>
+              <button
+                className='finishBuying'
+                disabled={!stock}
+                onClick={() => finishBuying()}
+              >
+                Terminar compra
+              </button>
+              <button
+                className='continueBuying'
+                onClick={() => history.push('/')}
+              >
+                Continuar comprando
+              </button>
+              </>
+            ) : (
+              ''
+            )}
           </CardActions>
         </Wrapper>
       </Card>

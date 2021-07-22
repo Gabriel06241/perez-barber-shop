@@ -9,6 +9,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { CartProvider } from './context/cartContext';
 
 const Wrapper = styled.div``
 
@@ -17,37 +18,31 @@ export const App = () => {
 
   // const isLoading, error = null
 
-  // const getTotalItems = () => null
-
-  const handleAddToCart = () => {
-    console.log('clicked!')
-  }
-
-  // const handleRemoveFromCart = () => null
-
   // if (isLoading) return <LinearProgress />
 
   // if (error) return <div>Something went wrong ...</div>
 
   return (
-    <Router>
-      <Wrapper>
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <ItemListContainer greeting={greeting} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/category/:id">
-            <ItemListContainer greeting={greeting} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/item/:id">
-            <ItemDetailContainer greeting={greeting} handleAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
-        </Switch>
-      </Wrapper>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Wrapper>
+          <NavBar />
+          <Switch>
+            <Route exact path="/">
+              <ItemListContainer greeting={greeting} />
+            </Route>
+            <Route exact path="/category/:id">
+              <ItemListContainer greeting={greeting} />
+            </Route>
+            <Route exact path="/item/:id">
+              <ItemDetailContainer greeting={greeting} />
+            </Route>
+            <Route exact path="/cart">
+              <Cart />
+            </Route>
+          </Switch>
+        </Wrapper>
+      </Router>
+    </CartProvider>
   );
 }

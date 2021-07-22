@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Skeleton from '@material-ui/lab/Skeleton'
 
@@ -34,7 +34,8 @@ const Wrapper = styled.div`
   }
 `
 
-export const Item = ({ item, handleAddToCart }) => {
+export const Item = ({ item }) => {
+  const history = useHistory()
   const { id, title, description, price, image } = item
 
   return (
@@ -61,7 +62,8 @@ export const Item = ({ item, handleAddToCart }) => {
           {price}{' '}
         </h3>
       </div>
-      <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button>
+      <Button onClick={() => history.push(`/item/${id}`) }>Ver detalle</Button>
+      {/* <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button> */}
     </Wrapper>
   )
 }
