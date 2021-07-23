@@ -7,13 +7,13 @@ const Wrapper = styled.div`
     border-radius: 0 0 20px 20px;
   }`
 
-export const ItemList = ({ items, handleAddToCart }) => {
+export const ItemList = ({ items }) => {
   return (
     <Wrapper>
       <Grid container spacing={3}>
         {items.map(item =>(
           <Grid item key={item.id} xs={12} sm={4}>
-            <Item item={item} handleAddToCart={handleAddToCart} />
+            <Item item={item} />
           </Grid>
         ))}
       </Grid>

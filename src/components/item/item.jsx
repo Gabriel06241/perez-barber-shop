@@ -28,7 +28,7 @@ const Wrapper = styled.div`
     padding: 1rem;
     height: 100%;
   }
-  
+
   .skeletonImage {
     justify-content: center;
   }
@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 
 export const Item = ({ item }) => {
   const history = useHistory()
-  const { id, title, description, price, image } = item
+  const { docId, title, description, price, image } = item
 
   return (
     <Wrapper>
@@ -50,7 +50,7 @@ export const Item = ({ item }) => {
           />}
       <div>
         <h3>
-          <Link to={`/item/${id}`} className="itemLink">
+          <Link to={`/item/${docId}`} className="itemLink">
             {' '}{title}{' '}
           </Link>
         </h3>
@@ -62,7 +62,7 @@ export const Item = ({ item }) => {
           {price}{' '}
         </h3>
       </div>
-      <Button onClick={() => history.push(`/item/${id}`) }>Ver detalle</Button>
+      <Button onClick={() => history.push(`/item/${docId}`) }>Ver detalle</Button>
       {/* <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button> */}
     </Wrapper>
   )
