@@ -66,7 +66,7 @@ export const ItemDetail = ({ item }) => {
   const history = useHistory()
   const [itemAdded, setItemAdded] = useState(false)
   const { quantity, setQuantity, addItem, setCartOpen } = useContext(CartContext)
-  const { id, title, description, price, image, stock } = item
+  const { docId, title, description, price, image, stock } = item
 
   const onAdd = ({ quantityToAdd }) => {
     setItemAdded(true)
@@ -100,7 +100,7 @@ export const ItemDetail = ({ item }) => {
           {title ? (
             <div>
               <h4>
-                <Link to={`/item/${id}`} className='itemLink'>
+                <Link to={`/item/${docId}`} className='itemLink'>
                   {' '}
                   {title}{' '}
                 </Link>

@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { CartItem } from '../../components/cartItem/cartItem'
 import { CartContext } from '../../context/cartContext'
 import styled from 'styled-components'
-import Badge from '@material-ui/core/Badge'
 import IconButton from '@material-ui/core/IconButton'
 import RemoveShoppingCart from '@material-ui/icons/RemoveShoppingCart'
 
