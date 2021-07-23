@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavBar } from './components/navBar/navBar'
 import { ItemListContainer } from './pages/itemListContainer/itemListContainer'
 import { ItemDetailContainer } from './pages/itemDetailContainer/itemDetailContainer'
-import { Cart } from "./components/cart/cart";
+import { Cart } from "./pages/cart/cart";
 import {
   BrowserRouter as Router,
   Switch,

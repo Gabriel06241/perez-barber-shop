@@ -5,7 +5,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import Drawer from '@material-ui/core/Drawer'
 import Badge from '@material-ui/core/Badge'
 import { useContext } from 'react'
-import { Cart } from '../cart/cart'
+import { Cart } from '../../pages/cart/cart'
 import { CartContext } from '../../context/cartContext'
 
 const StyledButton = styled(IconButton)`
@@ -16,7 +16,7 @@ const StyledButton = styled(IconButton)`
 `
 
 export const CartWidget = () => {
-  const { quantity, cartOpen, setCartOpen, finishBuying } = useContext(CartContext)
+  const { quantity, cartOpen, setCartOpen } = useContext(CartContext)
   return (
     <>
       {quantity ? (
@@ -24,11 +24,11 @@ export const CartWidget = () => {
           <Drawer
             anchor='right'
             open={cartOpen}
-            onClose={() => setCartOpen()}
+            onClose={() => setCartOpen(false)}
           >
             <Cart />
           </Drawer>
-          <StyledButton onClick={() => finishBuying()}>
+          <StyledButton onClick={() => setCartOpen(true)}>
             <Badge badgeContent={quantity} color='error'>
               <AddShoppingCartIcon />
             </Badge>

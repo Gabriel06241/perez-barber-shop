@@ -65,13 +65,11 @@ const Wrapper = styled.div`
 export const ItemDetail = ({ item }) => {
   const history = useHistory()
   const [itemAdded, setItemAdded] = useState(false)
-  const { quantity, setQuantity, addItem, finishBuying } = useContext(CartContext)
+  const { quantity, setQuantity, addItem, setCartOpen } = useContext(CartContext)
   const { id, title, description, price, image, stock } = item
 
   const onAdd = ({ quantityToAdd }) => {
     setItemAdded(true)
-    console.log('quantity :>> ', quantity);
-    console.log('quantityToAdd :>> ', quantityToAdd);
     setQuantity(quantity + quantityToAdd)
     addItem({ item, quantity: quantityToAdd })
   }
@@ -126,12 +124,12 @@ export const ItemDetail = ({ item }) => {
             ) : (
               ''
             )}
-            {title && itemAdded ? (
+            {title && itemAdded && quantity ? (
               <>
               <button
                 className='finishBuying'
                 disabled={!stock}
-                onClick={() => finishBuying()}
+                onClick={() => setCartOpen(true)}
               >
                 Terminar compra
               </button>
