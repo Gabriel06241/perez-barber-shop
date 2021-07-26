@@ -23,10 +23,6 @@ const Wrapper = styled.div`
   padding: 10px;
   margin: 10px;
 
-  /* button {
-    border-radius: 0 0 20px 20px;
-  } */
-
   img {
     max-height: 350px;
     object-fit: cover;
@@ -36,7 +32,6 @@ const Wrapper = styled.div`
   div {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
-    /* padding: 1rem; */
     height: 100%;
   }
 

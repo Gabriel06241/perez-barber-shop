@@ -63,7 +63,6 @@ export const Item = ({ item }) => {
         </h3>
       </div>
       <Button onClick={() => history.push(`/item/${docId}`) }>Ver detalle</Button>
-      {/* <Button onClick={() => handleAddToCart(item)}>Ver detalle</Button> */}
     </Wrapper>
   )
 }

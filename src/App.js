@@ -1,4 +1,3 @@
-// import './App.css';
 import styled from 'styled-components';
 import { NavBar } from './components/navBar/navBar'
 import { ItemListContainer } from './pages/itemListContainer/itemListContainer'
@@ -15,12 +14,6 @@ const Wrapper = styled.div``
 
 export const App = () => {
   const greeting = "Hola 👋🏽 , ¡Bienvenido a tu Barber Shop!";
-
-  // const isLoading, error = null
-
-  // if (isLoading) return <LinearProgress />
-
-  // if (error) return <div>Something went wrong ...</div>
 
   return (
     <CartProvider>

@@ -3,7 +3,6 @@ import logo from '../../images/coderhouse.png'
 import { ItemList } from '../../components/itemList/itemList'
 import { useState, useEffect, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import { getItemsFromFirebase, getItemsByCategory } from '../../data/items'
 
 export const ItemListContainer = ({ greeting }) => {
@@ -11,13 +10,14 @@ export const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([])
 
   const getItems = async (id) =>
-    await new Promise(async(resolve, reject) => {
-      const items = id ? await getItemsByCategory(id) : await getItemsFromFirebase()
+    await new Promise(async (resolve, reject) => {
+      const items = id
+        ? await getItemsByCategory(id)
+        : await getItemsFromFirebase()
       setTimeout(() => {
         resolve(items)
       }, 1000)
     })
-
 
   useEffect(() => {
     getItems(id)
@@ -32,7 +32,6 @@ export const ItemListContainer = ({ greeting }) => {
       <p>{greeting}</p>
       {!items.length ? (
         <Fragment>
-          <LinearProgress />
           <img src={logo} className='logo-loader' alt='logo' />
         </Fragment>
       ) : (

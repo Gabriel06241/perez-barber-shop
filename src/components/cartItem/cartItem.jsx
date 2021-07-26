@@ -3,12 +3,33 @@ import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 import { CartContext } from '../../context/cartContext'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid lightblue;
+  padding-bottom: 20px;
+
+  div {
+    flex: 1;
+  }
+
+  .information, .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  img  {
+    max-width: 80px;
+    object-fit: cover;
+    margin-left: 40px;
+  }
+`
 
 export const CartItem = ({ cartItem }) => {
   const { quantity, setQuantity, addItem, removeItem } = useContext(CartContext)
   const {
-    item: { id, title, price },
+    item: { id, title, price, image },
     item
   } = cartItem
 
@@ -50,6 +71,7 @@ export const CartItem = ({ cartItem }) => {
           </Button>
         </div>
       </div>
+      <img src={image} alt={title} />
     </Wrapper>
   )
 }
