@@ -16,7 +16,11 @@ export const ItemDetailContainer = ({ greeting }) => {
       }, 1000)
     })
       .then((item) => {
-        setItem(item)
+        if (!item.title) {
+          alert('Error el id del producto no existe en firebase...')
+        } else {
+          setItem(item)
+        }
       })
       .catch((error) => alert('Error obteniendo un producto ...', error))
   }, [id])
