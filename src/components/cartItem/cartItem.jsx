@@ -29,13 +29,15 @@ const Wrapper = styled.div`
 export const CartItem = ({ cartItem }) => {
   const { quantity, setQuantity, addItem, removeItem } = useContext(CartContext)
   const {
-    item: { id, title, price, image },
+    item: { id, title, price, image, stock },
     item
   } = cartItem
 
   const handleAddItem = (item, quantityToAdd) => {
-    setQuantity(quantity + quantityToAdd)
-    addItem({ item, quantity: quantityToAdd })
+    if (stock > quantity) {
+      setQuantity(quantity + quantityToAdd)
+      addItem({ item, quantity: quantityToAdd })
+    }
   }
 
   const handleRemoveItem = (id) => {
