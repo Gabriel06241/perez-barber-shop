@@ -1,12 +1,14 @@
 import './itemDetailContainer.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { ItemDetail } from '../../components/itemDetail/itemDetail'
-import { getItemByDocId } from '../../data/items'
+import { CartContext } from '../../context/cartContext'
 
 export const ItemDetailContainer = ({ greeting }) => {
   const { id } = useParams()
   const [item, setItem] = useState({})
+
+  const { getItemByDocId } = useContext(CartContext)
 
   useEffect(() => {
     new Promise(async (resolve, reject) => {
@@ -23,6 +25,7 @@ export const ItemDetailContainer = ({ greeting }) => {
         }
       })
       .catch((error) => alert('Error obteniendo un producto ...', error))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   return (
