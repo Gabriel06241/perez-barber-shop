@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 import { CartContext } from '../../context/cartContext'
+import { useState } from 'react'
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,20 +28,26 @@ const Wrapper = styled.div`
 `
 
 export const CartItem = ({ cartItem }) => {
-  const { quantity, setQuantity, addItem, removeItem } = useContext(CartContext)
+  const [addButton, setAddButton ] = useState(false)
+  const { quantity, setQuantity, addItem, removeItem, cartItems } = useContext(CartContext)
   const {
     item: { id, title, price, image, stock },
     item
   } = cartItem
 
   const handleAddItem = (item, quantityToAdd) => {
-    if (stock > quantity) {
+    const { id: itemId } = item
+    const cartItem = cartItems.find(({ item }) => item.id === itemId);
+    if (stock > cartItem.quantity) {
       setQuantity(quantity + quantityToAdd)
       addItem({ item, quantity: quantityToAdd })
+    } else {
+      setAddButton(true)
     }
   }
 
   const handleRemoveItem = (id) => {
+    setAddButton(false)
     setQuantity(quantity - 1)
     removeItem(id)
   }
@@ -68,6 +75,7 @@ export const CartItem = ({ cartItem }) => {
             disableElevation
             variant='contained'
             onClick={() => handleAddItem(item, 1)}
+            disabled={addButton}
           >
             +
           </Button>

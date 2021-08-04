@@ -1,4 +1,4 @@
-import { firebase } from '../firebase'
+import { firebase } from '../firebase/firebase'
 
 export const uploadItems = async (ITEMS) => {
   const db = firebase.firestore()
@@ -10,21 +10,10 @@ export const uploadItems = async (ITEMS) => {
   });
 
   const response = await batch.commit();
-  console.log('response :>> ', response);
   return response
 }
 
-export const getItemsFromFirebase = async () => {
-  const snapshot = await firebase.firestore().collection('items').get()
+export const getItemById = async (id) => {
+  const snapshot = await firebase.firestore().collection('items').where('id', '==', id).get()
   return snapshot.docs.map((doc) => { return { ...doc.data(), docId: doc.id } });
-}
-
-export const getItemsByCategory = async (category) => {
-  const snapshot = await firebase.firestore().collection('items').where('category', '==', category).get()
-  return snapshot.docs.map((doc) => { return { ...doc.data(), docId: doc.id } });
-}
-
-export const getItemByDocId = async (docId) => {
-  const doc = await firebase.firestore().collection('items').doc(docId).get()
-  return { ...doc.data(), docId: doc.id }
 }
