@@ -2,41 +2,58 @@
   align-items: center;
   display: flex;
   justify-content: stretch;
-  padding: 4px 12px;
   background-color: cadetblue;
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .navBar .categoriesDiv {
   display: flex;
-  flex-grow: 3;
+  flex-grow: 4;
   justify-content: center;
   align-content: center;
 }
 
 .navBar .categories {
   display: flex;
+  flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
+  justify-content: center;
 }
+
+/* .navBar .category {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 3px 5px;
+  padding: 3px;
+  background-color: cornflowerblue;
+  font-size: 15px;
+  border-radius: 10px;
+  width: 165px;
+} */
 
 .navBar .category {
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
   align-items: center;
-  margin: 0 5px;
-  padding: 5px;
+  margin: 2px 3px;
+  padding: 0;
   background-color: cornflowerblue;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 10px;
+  width: 165px;
 }
 
 .navLink:link {
   text-decoration: none;
 }
-/* .navLink:visited {
-  color: #fff;
-} */
+
 .navLink:hover {
   color: yellow;
 }
@@ -51,6 +68,44 @@
 }
 
 .barberLogo {
-  height: 20vmin;
+  height: 25vmin;
   pointer-events: none;
+  padding: 10px;
+}
+
+.cartWidget {
+  width: 100px;
+  padding: 10px;
+}
+
+@media (min-width: 320px) {
+  .navBar .category {
+    font-size: 13px;
+    margin: 2px 3px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  .navBar .category {
+    font-size: 13.5px;
+    margin: 3px 5px;
+    padding: 1px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navBar .category {
+    font-size: 14.5px;
+    margin: 3px 5px;
+    padding: 2px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navBar .category {
+    font-size: 15.5px;
+    margin: 3px 5px;
+    padding: 3px;
+  }
 }

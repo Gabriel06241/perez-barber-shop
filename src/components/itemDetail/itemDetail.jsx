@@ -47,6 +47,7 @@ const Wrapper = styled.div`
     background-color: cadetblue;
     text-align: center;
     margin-bottom: 30px;
+    padding: 5px 5px;
   }
 
   .continueBuying {
@@ -54,6 +55,7 @@ const Wrapper = styled.div`
     background-color: skyblue;
     text-align: center;
     margin-bottom: 30px;
+    padding: 5px 5px;
   }
 `
 

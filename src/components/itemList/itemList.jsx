@@ -2,10 +2,7 @@ import styled from 'styled-components'
 import { Item } from './../item/item'
 import Grid from '@material-ui/core/Grid'
 
-const Wrapper = styled.div`
-  button {
-    border-radius: 0 0 20px 20px;
-  }`
+const Wrapper = styled.div``
 
 export const ItemList = ({ items }) => {
   return (

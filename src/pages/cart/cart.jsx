@@ -1,3 +1,4 @@
+import './cart.css'
 import { useContext, useState } from 'react'
 import { CartItem } from '../../components/cartItem/cartItem'
 import { CartContext } from '../../context/cartContext'
@@ -9,15 +10,19 @@ import Button from '@material-ui/core/Button'
 
 const Wrapper = styled.aside`
   font-family: Arial, Helvetica, sans-serif;
-  width: 500px;
+  width: 320px;
   padding: 20px;
+
+  @media (min-width: 530px) {
+    width: 500px;
+  }
 `
 
 const StyledButton = styled(IconButton)`
   position: fixed;
   z-index: 100;
-  right: 20px;
-  top: 20px;
+  right: 10px;
+  top: 25px;
 `
 
 export const Cart = () => {

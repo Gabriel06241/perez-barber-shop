@@ -8,7 +8,7 @@ color: #ee402c;
 background: papayawhip;
 border: none;
 border-radius: 3px;
-width: 100%;
+width: 97%;
 margin-bottom: 0.5em;
 `
 

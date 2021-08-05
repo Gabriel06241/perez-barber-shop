@@ -11,8 +11,8 @@ import { CartContext } from '../../context/cartContext'
 const StyledButton = styled(IconButton)`
   position: fixed;
   z-index: 100;
-  right: 20px;
-  top: 20px;
+  right: 14px;
+  top: 21px;
 `
 
 export const CartWidget = () => {
