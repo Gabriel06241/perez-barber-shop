@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Gabriel06241/perez-barber-shop/static/css/main.68c2b5a0.chunk.css",
-    "main.js": "/Gabriel06241/perez-barber-shop/static/js/main.70fd66e6.chunk.js",
-    "main.js.map": "/Gabriel06241/perez-barber-shop/static/js/main.70fd66e6.chunk.js.map",
-    "runtime-main.js": "/Gabriel06241/perez-barber-shop/static/js/runtime-main.2467bc29.js",
-    "runtime-main.js.map": "/Gabriel06241/perez-barber-shop/static/js/runtime-main.2467bc29.js.map",
-    "static/js/2.a838884f.chunk.js": "/Gabriel06241/perez-barber-shop/static/js/2.a838884f.chunk.js",
-    "static/js/2.a838884f.chunk.js.map": "/Gabriel06241/perez-barber-shop/static/js/2.a838884f.chunk.js.map",
-    "index.html": "/Gabriel06241/perez-barber-shop/index.html",
-    "static/css/main.68c2b5a0.chunk.css.map": "/Gabriel06241/perez-barber-shop/static/css/main.68c2b5a0.chunk.css.map",
-    "static/js/2.a838884f.chunk.js.LICENSE.txt": "/Gabriel06241/perez-barber-shop/static/js/2.a838884f.chunk.js.LICENSE.txt",
-    "static/media/barberlogo.f2e24360.png": "/Gabriel06241/perez-barber-shop/static/media/barberlogo.f2e24360.png",
-    "static/media/coderhouse.c1d3c866.png": "/Gabriel06241/perez-barber-shop/static/media/coderhouse.c1d3c866.png"
+    "main.css": "/perez-barber-shop/static/css/main.68c2b5a0.chunk.css",
+    "main.js": "/perez-barber-shop/static/js/main.70fd66e6.chunk.js",
+    "main.js.map": "/perez-barber-shop/static/js/main.70fd66e6.chunk.js.map",
+    "runtime-main.js": "/perez-barber-shop/static/js/runtime-main.10a2b29d.js",
+    "runtime-main.js.map": "/perez-barber-shop/static/js/runtime-main.10a2b29d.js.map",
+    "static/js/2.e3c465e8.chunk.js": "/perez-barber-shop/static/js/2.e3c465e8.chunk.js",
+    "static/js/2.e3c465e8.chunk.js.map": "/perez-barber-shop/static/js/2.e3c465e8.chunk.js.map",
+    "index.html": "/perez-barber-shop/index.html",
+    "static/css/main.68c2b5a0.chunk.css.map": "/perez-barber-shop/static/css/main.68c2b5a0.chunk.css.map",
+    "static/js/2.e3c465e8.chunk.js.LICENSE.txt": "/perez-barber-shop/static/js/2.e3c465e8.chunk.js.LICENSE.txt",
+    "static/media/barberlogo.f2e24360.png": "/perez-barber-shop/static/media/barberlogo.f2e24360.png",
+    "static/media/coderhouse.c1d3c866.png": "/perez-barber-shop/static/media/coderhouse.c1d3c866.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2467bc29.js",
-    "static/js/2.a838884f.chunk.js",
+    "static/js/runtime-main.10a2b29d.js",
+    "static/js/2.e3c465e8.chunk.js",
     "static/css/main.68c2b5a0.chunk.css",
     "static/js/main.70fd66e6.chunk.js"
   ]
